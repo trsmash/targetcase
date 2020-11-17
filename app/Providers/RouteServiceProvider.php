@@ -75,7 +75,7 @@ class RouteServiceProvider extends ServiceProvider
 
                 return $service->findProductById($value);
             } catch (\Exception $exception) {
-                abort(404, 'RedSky Product Not Found');
+                abort($exception->getCode(), $exception->getMessage());
             }
         });
     }

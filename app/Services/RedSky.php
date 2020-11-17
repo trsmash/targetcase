@@ -2,6 +2,7 @@
 
 use Exception;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ClientException;
 
 /**
  * Class RedSky
@@ -36,10 +37,13 @@ class RedSky
      */
     public function findProductById($id)
     {
-        $response = $this->client->request('GET', $id, ['query' => $this->getQueryParams()]);
-        if ($response->getStatusCode() != 200) throw new Exception("There was a problem fetching product with id: {$id}");
+        try {
+            $response = $this->client->request('GET', $id, ['query' => $this->getQueryParams()]);
 
-        return json_decode((string) $response->getBody());
+            return json_decode((string) $response->getBody());
+        } catch (Exception $exception) {
+            throw new Exception("RedSkey Product with id {$id} Not Found", 404);
+        }
     }
 
     /**

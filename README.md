@@ -17,7 +17,7 @@ This project is using Laravel 8.x in a docker container with PHP 7.4. To setup t
     DB_PASSWORD=
 - docker-compose exec app php artisan migrate
 
-With the above completed, you should be able to browse to http://127.0.0.1 and see the Laravel Welcome page
+With the above completed, you should be able to browse to http://127.0.0.1:8080 and see the Laravel Welcome page
 
 Once done, you will need to update your .env file to add the key REDSKY_URI
 

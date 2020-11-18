@@ -6,7 +6,15 @@ This project is using Laravel 8.x in a docker container with PHP 7.4. To setup t
 - docker-compose up
 - docker-compose exec app composer install
 - npm install *npm is not added in the container. you will need to run npm from your local machine*
+- rename .env.example to .env
 - docker-compose exec app php artisan key:generate
+- put the following values in the .env file:
+    DB_CONNECTION=mysql
+    DB_HOST=db
+    DB_PORT=3306
+    DB_DATABASE=targetcase
+    DB_USERNAME=root
+    DB_PASSWORD=
 - docker-compose exec app php artisan migrate
 
 With the above completed, you should be able to browse to http://127.0.0.1 and see the Laravel Welcome page
